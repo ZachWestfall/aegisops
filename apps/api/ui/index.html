@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AegisOps Control Panel</title>
+  <link rel="stylesheet" href="styles.css?v=15?v=14?v=13?v=9"/>
+  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>AegisOps Control Panel</h1>
+  <div class="chips">
+    <span id="healthChip" class="chip">Health: —</span>
+    <span id="authChip" class="chip warn">Auth: not set</span>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Configuration</h2>
+    <label>Base URL
+      <input id="baseUrl" type="text" placeholder="http://127.0.0.1:8000"/>
+    </label>
+    <label>API Key
+      <div class="row">
+        <input id="apiKey" type="password" placeholder="Your x-api-key"/>
+        <button id="toggleKey" type="button">Show</button>
+      </div>
+    </label>
+    <div class="row">
+      <button id="saveCfg" type="button">Save config</button>
+      <button id="testHealth" type="button">Test Health</button>
+      <a id="docsLink" href="#" target="_blank" rel="noopener" class="btnlink">Open API Docs</a>
+    </div>
+    <div id="cfgMsg" class="muted"></div>
+  </section>
+
+  <section class="card">
+    <h2>/trigger (POST)</h2>
+    <label>event_type
+      <input id="triggerEvent" type="text" value="ap_invoice_created"/>
+    </label>
+    <label>payload (JSON)
+      <textarea id="triggerPayload" rows="6">{ "vendor":"Acme", "amount":1250.56 }</textarea>
+    </label>
+    <button id="sendTrigger">Send /trigger</button>
+    <div class="meta"><span id="triggerCode"></span><span id="triggerLatency"></span></div>
+    <pre id="outTrigger" class="out">Response will appear here…</pre>
+  </section>
+
+  <section class="card">
+    <h2>/trigger2 (POST) with dry_run</h2>
+    <label>event_type
+      <input id="trigger2Event" type="text" value="expense_report_submitted"/>
+    </label>
+    <label>payload (JSON)
+      <textarea id="trigger2Payload" rows="6">{ "total":412.80, "receipts_count":4 }</textarea>
+    </label>
+    <label class="row">
+      <input id="dryRun" type="checkbox" checked/>
+      <span>dry_run</span>
+    </label>
+    <button id="sendTrigger2">Send /trigger2</button>
+    <div class="meta"><span id="trigger2Code"></span><span id="trigger2Latency"></span></div>
+    <pre id="outTrigger2" class="out">Response will appear here…</pre>
+  </section>
+
+  <section class="card">
+    <h2>Ledger</h2>
+    <div class="row">
+      <label>Rows <input id="rows" type="number" min="1" max="200" value="50" style="width:80px"/></label>
+      <button id="refreshLedger">Refresh</button>
+      <button id="downloadCsv">Download CSV</button>
+    </div>
+    <div id="ledgerEmpty" class="muted" style="display:none">No entries yet.</div>
+    <div class="tablewrap">
+      <table id="ledgerTable">
+        <thead><tr>
+          <th>ID</th><th>Time</th><th>Event</th><th>Δ USD</th><th>Conf</th><th>Dry?</th><th>Explanation</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <small>© AegisOps • <a id="docsFooter" href="#" target="_blank" rel="noopener">/docs</a></small>
+</footer>
+
+<script src="app.js?v=15?v=14?v=13?v=9"></script>
+</body>
+<section class="startup-anim">  <div id="startupAnim" aria-label="AegisOps animated logo" role="img"></div>  <div class="startup-copy">    <h3>Automation that explains itself</h3>    <p class="muted">Planner → Policy → Action → Measured savings</p>  </div></section>
+</html>
+<section class="startup-anim">
+  <div id="startupAnim" aria-label="AegisOps animated logo" role="img"></div>
+  <div class="startup-copy">
+    <h3>Automation that explains itself</h3>
+    <p class="muted">Planner → Policy → Action → Measured savings</p>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+# Environment / secrets — NEVER commit
+.env
+.env.*
+!.env.example
+*_api_key*
+{received_x_api_key*
+
+# Local runtime state
+aegisops.db
+*.db
+.aegisops_cost_ledger.jsonl
+*.jsonl
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
